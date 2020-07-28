@@ -6,7 +6,8 @@ const ReactDOM = {
 }
 
 function render(vnode, container) {
-    return diff(undefined, vnode, container);
+    let dom;
+    return diff(dom, vnode, container);
     // return container.appendChild(_render(vnode));
 }
 

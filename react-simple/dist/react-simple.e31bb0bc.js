@@ -162,7 +162,7 @@ function diffNode(dom, vnode) {
 
   if (typeof vnode === 'string') {
     if (dom && dom.nodeType === 3) {
-      //判断是否更新
+      //判断是否更新类型是否是文本标签
       if (dom.textContent !== vnode) {
         // 更新文本内容
         dom.textContent = vnode;
@@ -171,6 +171,7 @@ function diffNode(dom, vnode) {
       out = document.createTextNode(vnode);
 
       if (dom && dom.parentNode) {
+        // 将dom替换为out
         dom.parentNode.replaceNode(out, dom);
       }
     }
@@ -351,7 +352,8 @@ var ReactDOM = {
 };
 
 function render(vnode, container) {
-  return (0, _diff.diff)(undefined, vnode, container); // return container.appendChild(_render(vnode));
+  var dom;
+  return (0, _diff.diff)(dom, vnode, container); // return container.appendChild(_render(vnode));
 }
 
 function _render(vnode) {
@@ -772,7 +774,7 @@ var title = 'active'; // ReactDOM.render(
 //     document.querySelector('#root')
 // )
 
-_reactDom.default.render(_react.default.createElement(Home, null), document.querySelector('#root'));
+_reactDom.default.render(ele, document.querySelector('#root'));
 /*
 createElement(tag, attrs, child1, child2...)
 */
@@ -804,7 +806,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58661" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58618" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

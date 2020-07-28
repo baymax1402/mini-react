@@ -19,7 +19,7 @@ export function diffNode(dom, vnode) {
     }
     // 如果vnode是字符串
     if (typeof vnode === 'string') {
-        if (dom && dom.nodeType === 3) { //判断是否更新
+        if (dom && dom.nodeType === 3) { //判断是否更新类型是否是文本标签
             if (dom.textContent !== vnode) {
                 // 更新文本内容
                 dom.textContent = vnode;
@@ -27,6 +27,7 @@ export function diffNode(dom, vnode) {
         } else {
             out = document.createTextNode(vnode);
             if (dom && dom.parentNode) {
+                // 将dom替换为out
                 dom.parentNode.replaceNode(out, dom);
             }
         }
@@ -45,7 +46,7 @@ export function diffNode(dom, vnode) {
         ( out.childNodes && 
           out.childNodes.length > 0
         )) {
-           diffChildren(out, vnode.childrens);
+        diffChildren(out, vnode.childrens);
     }
     diffAttribute(out, vnode);
     return out;

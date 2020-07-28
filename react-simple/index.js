@@ -69,9 +69,8 @@ const title = 'active'
 //     ele, 
 //     document.querySelector('#root')
 // )
-
 ReactDOM.render(
-    <Home />, 
+    ele, 
     document.querySelector('#root')
 )
 /*
